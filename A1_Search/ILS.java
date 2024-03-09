@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class ILS {
-    int numCampuses = 5;
+    private int numCampuses = 5;
 
-    int[][] costMatrix = {
+    private int[][] costMatrix = {
             { 0, 15, 20, 22, 30 },
             { 15, 0, 10, 12, 25 },
             { 20, 10, 0, 8, 22 },
@@ -11,7 +11,7 @@ public class ILS {
             { 30, 25, 22, 18, 0 }
     };
 
-    public void run() {
+    public void solve() {
         List<Integer> route = initialRoute();
 
         for (int i = 0; i < 1000; i++) {
