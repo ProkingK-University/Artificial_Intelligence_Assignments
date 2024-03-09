@@ -14,7 +14,7 @@ public class ILS {
     public void solve() {
         List<Integer> route = initialRoute();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             List<Integer> newRoute = perturb(route);
             route = localSearch(route);
 

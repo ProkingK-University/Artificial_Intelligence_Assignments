@@ -3,7 +3,7 @@ public class Main {
         ILS ils = new ILS();
         ils.solve();
 
-        SA sa = new SA();
-        sa.solve();
+        // SA sa = new SA();
+        // sa.solve();
     }
 }
