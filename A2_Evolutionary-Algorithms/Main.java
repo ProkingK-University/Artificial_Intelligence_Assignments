@@ -6,7 +6,7 @@ public class Main {
         File[] listOfFiles = folder.listFiles();
 
         for (File file : listOfFiles) {
-            if (file.isFile() && !file.getName().equals("knapPI_1_100_1000_1")) {
+            if (file.isFile()) {
                 Instance instance = readFile("Dataset/" + file.getName());
 
                 GeneticAlgorithm ga = new GeneticAlgorithm();
@@ -26,8 +26,8 @@ public class Main {
         int capacity = 0;
         int lineNumber = 0;
 
-        int[] values = null;
-        int[] weights = null;
+        double[] values = null;
+        double[] weights = null;
 
         while ((line = reader.readLine()) != null) {
             String[] numbers = line.split(" ");
@@ -36,11 +36,11 @@ public class Main {
                 numItems = Integer.parseInt(numbers[0]);
                 capacity = Integer.parseInt(numbers[1]);
 
-                values = new int[numItems];
-                weights = new int[numItems];
+                values = new double[numItems];
+                weights = new double[numItems];
             } else if (numbers.length == 2) {
-                values[lineNumber - 1] = Integer.parseInt(numbers[0]);
-                weights[lineNumber - 1] = Integer.parseInt(numbers[1]);
+                values[lineNumber - 1] = Double.parseDouble(numbers[0]);
+                weights[lineNumber - 1] = Double.parseDouble(numbers[1]);
             } else {
                 solution = line;
             }

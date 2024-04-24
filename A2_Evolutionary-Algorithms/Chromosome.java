@@ -1,12 +1,12 @@
 import java.util.Random;
 
 public class Chromosome {
-    private int[] genes;
-    private int fitness;
+    private double[] genes;
+    private double fitness;
     private static final Random rand = new Random();
 
     public Chromosome(int length) {
-        genes = new int[length];
+        genes = new double[length];
 
         for (int i = 0; i < length; i++) {
             genes[i] = rand.nextInt(2);
@@ -15,11 +15,11 @@ public class Chromosome {
         fitness = 0;
     }
 
-    public int getGene(int index) {
+    public double getGene(int index) {
         return genes[index];
     }
 
-    public void setGene(int index, int value) {
+    public void setGene(int index, double value) {
         genes[index] = value;
     }
 
@@ -27,7 +27,7 @@ public class Chromosome {
         return genes.length;
     }
 
-    public int getFitness() {
+    public double getFitness() {
         return fitness;
     }
 
@@ -45,8 +45,10 @@ public class Chromosome {
         return output;
     }
 
-    public void calculateFitness(int[] weights, int[] values, int capacity) {
+    public void calculateFitness(double[] weights, double[] values, int capacity) {
         int totalWeight = 0;
+
+        fitness = 0;
 
         for (int i = 0; i < genes.length; i++) {
             if (genes[i] == 1) {
@@ -71,7 +73,6 @@ public class Chromosome {
             genes[index] = 1;
         } else {
             genes[index] = 0;
-
         }
     }
 }

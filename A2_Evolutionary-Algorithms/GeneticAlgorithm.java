@@ -6,8 +6,10 @@ public class GeneticAlgorithm {
     final double MUTATION_RATE = 0.01;
     final int NUMBER_OF_GENERATIONS = 1000;
 
-    final Random rand = new Random();
-    private boolean localSearch = false;
+    boolean localSearch = false;
+
+    long seed = "COS314".hashCode();
+    final Random rand = new Random(seed);
 
     public Chromosome solve(Instance instance, boolean localSearch) {
         this.localSearch = localSearch;
@@ -33,7 +35,7 @@ public class GeneticAlgorithm {
         return population;
     }
 
-    void calculateFitness(Chromosome[] population, int[] weights, int[] values, int capacity) {
+    void calculateFitness(Chromosome[] population, double[] weights, double[] values, int capacity) {
         for (Chromosome chromosome : population) {
             chromosome.calculateFitness(weights, values, capacity);
         }
@@ -84,15 +86,16 @@ public class GeneticAlgorithm {
         return offspring;
     }
 
-    void localSearch(Chromosome chromosome, int[] weights, int[] values, int capacity) {
+    void localSearch(Chromosome chromosome, double[] weights, double[] values, int capacity) {
         for (int i = 0; i < chromosome.getLength(); i++) {
-            int oldFitness = chromosome.getFitness();
+            double oldFitness = chromosome.getFitness();
 
             chromosome.flipGene(i);
             chromosome.calculateFitness(weights, values, capacity);
 
             if (chromosome.getFitness() < oldFitness) {
                 chromosome.flipGene(i);
+                chromosome.calculateFitness(weights, values, capacity);
             }
         }
     }
