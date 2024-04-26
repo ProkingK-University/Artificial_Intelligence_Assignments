@@ -24,7 +24,7 @@ java Main <true/false>
 You can also run the program using the jar file:
 
 ```bash
-java -jar Main.jar <true/false>
+java -jar GA.jar <true/false>
 ```
 
 The <true/false> argument is used to run the GA with (true) or without (false) Local Search.
