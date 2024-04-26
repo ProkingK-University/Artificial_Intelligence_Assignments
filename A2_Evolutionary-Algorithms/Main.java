@@ -4,13 +4,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         File folder = new File("./Dataset");
         File[] listOfFiles = folder.listFiles();
+        Boolean localSearch = args[0].equals("true") ? true : false;
 
         for (File file : listOfFiles) {
             if (file.isFile()) {
                 Instance instance = readFile("Dataset/" + file.getName());
 
                 GeneticAlgorithm ga = new GeneticAlgorithm();
-                Chromosome solution = ga.solve(instance, true);
+                Chromosome solution = ga.solve(instance, localSearch);
                 System.out.println(file.getName() + ": " + solution.getFitness());
             }
         }
