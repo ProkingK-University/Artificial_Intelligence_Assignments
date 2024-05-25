@@ -51,7 +51,7 @@ class GPClassifier {
     static final int MAX_GENERATIONS = 50;
     static final int MAX_DEPTH = 4;
     static final char[] OPERATORS = { '+', '-', '*', '/' };
-    static final Random rand = new Random();
+    static final Random rand = new Random(6568458);
     static double[][] trainData;
     static double[] trainLabels;
     static double[][] testData;
